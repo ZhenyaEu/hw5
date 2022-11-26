@@ -1,20 +1,23 @@
 <body>
 <script>
-    function padString (name, number, flag) {
-       var output = '';
-       var a = number - name.length
-       var b = '';
-    for (var i = 1; i<=a; i++) {
-        b = flag.repeat(a);
-    }
-    if (name.length > number) {
+    function padString(name, number, symbol, addToStart) {
+      var output = '';
+      var diff = number - name.length
+      var placeholder = '';
+      for (var i = 1; i <= diff; i++) {
+        placeholder = symbol.repeat(diff);
+      }
+      if (name.length > number) {
         output = name;
-    }   else {
-        output = name + b;
-    } 
-    console.log(output);
-}
-   
-   padString ('Ivanna', 9, '*');
+      } else {
+        output = name + placeholder;
+      }
+      var str = output.toString();
+
+      let result = addToStart ? placeholder + name : name + placeholder
+      return `'${result}'`
+    }
+
+    console.log(padString('Ivanna', 8, '*', true)); 
 </script>
 </body>
